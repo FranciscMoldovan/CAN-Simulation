@@ -9,19 +9,17 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
-import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 
-import Model.Node;
-import Model.NodeDOM;
 import views.AddNodeGUI;
 import views.Frame;
 import views.NodeGUI;
+import Model.Node;
+import Model.NodeDOM;
 
 public class Controller {
-
 	private int dialogX = 30;
 	private int dialogY = 120;
 	private int dialogWidth = 220;

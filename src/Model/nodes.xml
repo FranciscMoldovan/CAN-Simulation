@@ -112,4 +112,10 @@
 <rxMessage>empty</rxMessage>
 <txMessage>empty</txMessage>
 </node>
+<node>
+<ID>11101110101</ID>
+<data>-empty-</data>
+<rxMessage>empty</rxMessage>
+<txMessage>empty</txMessage>
+</node>
 </nodes>

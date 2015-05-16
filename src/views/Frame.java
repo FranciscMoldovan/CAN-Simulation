@@ -18,7 +18,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JToggleButton;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
@@ -28,6 +27,11 @@ import Model.NodeDOM;
 
 public class Frame extends JFrame {
 
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public static Timer timer;
 	
@@ -145,16 +149,14 @@ public class Frame extends JFrame {
 					allTheIDs.add(allTheNodes.get(i).getID());
 					}
 					
-			System.out.println("Size: "+nodeActivity.size());
-				
-				 Set set = nodeActivity.entrySet();
-			      Iterator iterator = set.iterator();
+				 Set<?> set = nodeActivity.entrySet();
+			      Iterator<?> iterator = set.iterator();
 			      while(iterator.hasNext()) {
 			    	  ArrayList<String> row = new ArrayList<String>();
-			         Map.Entry<String, ArrayList<String>> mentry = (Map.Entry<String, ArrayList<String>>)iterator.next();
+			         @SuppressWarnings("unchecked")
+					Map.Entry<String, ArrayList<String>> mentry = (Map.Entry<String, ArrayList<String>>)iterator.next();
 			         row = mentry.getValue();
-			         System.out.print("key is: "+ mentry.getKey() + " & Value is: ");
-			         System.out.println(mentry.getValue());
+			       
 			        
 			         Object[] tableRow = new Object[]{row.get(0),row.get(1)};
 				    sortedTableModel.addRow(tableRow); 

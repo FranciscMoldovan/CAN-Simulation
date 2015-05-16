@@ -143,7 +143,7 @@ public class NodeGUI extends JDialog{
 			if (Integer.valueOf(fldLength.getText())>=8){
 			fldTX.setText(fldData.getText().substring(0,8));
 				
-				System.out.println(Frame.nodeTransmitions);
+				
 				Color color =Color.GREEN;
 				fldTX.setBackground(color);
 				
