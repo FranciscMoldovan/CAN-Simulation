@@ -135,11 +135,19 @@ public class Controller {
 		mainWindow.addButtonActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				if (evt.getSource() == mainWindow.getBtnAddNode()) {
-					{
-						addGUI.setVisible(true);
+					
+						int n = JOptionPane.showConfirmDialog(mainWindow, "<html>Simulations STOPS when adding new node!!<br>CONTINUE?</html>","ATTENTION!", JOptionPane.YES_OPTION);	
+						if (n==JOptionPane.YES_OPTION)
+						{
+							addGUI.setVisible(true);
+							Frame.resetAll();
+						}
+					
+						}
+						
 					}
-				}
-			}
+		
+			
 		});
 		// ///////////////////////////////////////////////////
 

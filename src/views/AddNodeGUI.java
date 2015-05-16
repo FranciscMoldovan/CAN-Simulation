@@ -29,7 +29,6 @@ public class AddNodeGUI extends JDialog{
 	private JLabel lblNewLabel;
 	private JButton btnAddNewNode;
 	private JLabel lblIDTaken;
-	
 	private ImageIcon imageOK;
 	private ImageIcon imageNotOK;
 	private ImageIcon idTaken;

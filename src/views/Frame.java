@@ -34,6 +34,7 @@ import java.util.TreeMap;
 import java.util.regex.Pattern;
 
 import javax.swing.JLabel;
+import javax.swing.JToggleButton;
 
 public class Frame extends JFrame {
 
@@ -56,11 +57,26 @@ public class Frame extends JFrame {
 	private JTable table; 
 	static JButton btnStep;
 	static JTable sortedTable;
-	
-	private JButton btnArbitrateBUS;
-	
+	static JButton btnReset;
+	static JButton btnArbitrateBUS;
+	static JToggleButton toggleSIM;
 	static TreeMap<String,ArrayList<String>> nodeActivity = new TreeMap<String,ArrayList<String>>();
 	
+	
+	public static void resetAll(){
+		if (dTableModel.getRowCount() > 0) {
+		    for (int i = dTableModel.getRowCount() - 1; i > -1; i--) {
+		    	dTableModel.removeRow(i);
+		    }
+		}
+		
+		if (sortedTableModel.getRowCount() > 0) {
+		    for (int i = sortedTableModel.getRowCount() - 1; i > -1; i--) {
+		    	sortedTableModel.removeRow(i);
+		    }
+		}
+		nodeActivity.clear();
+	}
 	/**
 	 * Create the frame.
 	 * @throws IOException 
@@ -104,13 +120,13 @@ public class Frame extends JFrame {
 		contentPane.add(scrollPane1);
 		
 		btnAddNode = new JButton("Add Node");
-		btnAddNode.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnAddNode.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnAddNode.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
 			}
 		});
-		btnAddNode.setBounds(26, 23, 111, 38);
+		btnAddNode.setBounds(26, 23, 120, 38);
 		contentPane.add(btnAddNode);
 		
 		btnStep = new JButton("Simulation STEP");
@@ -162,6 +178,46 @@ public class Frame extends JFrame {
 		btnArbitrateBUS.setBounds(1325, 408, 245, 68);
 		contentPane.add(btnArbitrateBUS);
 		
+		ImageIcon iconReset = new ImageIcon("reset.png");
+	    btnReset = new JButton(iconReset);
+		btnReset.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnReset.setBounds(1325, 11, 66, 66);
+		contentPane.add(btnReset);
+		btnReset.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				resetAll();
+				nodeTransmitions="";
+			}
+		});
+		
+		toggleSIM = new JToggleButton("Automatic SIMULATION");
+		toggleSIM.setFont(new Font("Linux Biolinum G", Font.BOLD, 18));
+		toggleSIM.setBounds(211, 23, 251, 38);
+		contentPane.add(toggleSIM);
+		
+		toggleSIM.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				resetAll();
+				nodeTransmitions="";
+				if (toggleSIM.isSelected()){
+					btnStep.setVisible(false);
+					btnAddNode.setVisible(false);
+					btnArbitrateBUS.setVisible(false);
+					btnReset.setVisible(false);
+				}else
+				{
+					btnStep.setVisible(true);
+					btnAddNode.setVisible(true);
+					btnArbitrateBUS.setVisible(true);
+					btnReset.setVisible(true);
+				}
+			}
+		});
+		
+		
+		
 		ImageIcon backgournd = new ImageIcon("fundal_can.png");
 		
 		JLabel lblNewLabel = new JLabel(backgournd);
@@ -170,13 +226,9 @@ public class Frame extends JFrame {
 		//lblNewLabel.setBounds(182, 23, 283, 92);
 		contentPane.add(lblNewLabel);
 		
-	
-		btnStep.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-               
-			}
-		});
+		
+		
+
 		
 		
 		

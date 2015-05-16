@@ -1,45 +1,30 @@
 package views;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.EventQueue;
-import java.awt.Graphics;
-import java.awt.Insets;
-import java.awt.Point;
-
-import javax.swing.BorderFactory;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
-import javax.swing.event.ChangeListener;
-import javax.swing.text.Caret;
-import javax.swing.text.JTextComponent;
-import javax.swing.text.html.parser.DTD;
-import javax.swing.JLabel;
-
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 
-import javax.swing.JTextField;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
-
-import org.w3c.dom.css.RGBColor;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 import Model.Node;
 
 public class NodeGUI extends JDialog{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private int nodeNumber;
 	
 	private JPanel contentPane;
@@ -199,13 +184,25 @@ public class NodeGUI extends JDialog{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (retrieved<Frame.max){
-					fldRX.setText(String.valueOf(Frame.sortedTable.getValueAt(retrieved, 1)));
-					fldRX.setBackground(Color.red);
-					retrieved++;
+						fldRX.setText(String.valueOf(Frame.sortedTable.getValueAt(retrieved, 1)));
+						fldRX.setBackground(Color.red);
+						Frame.sortedTable.setRowSelectionInterval(retrieved, retrieved);
+						retrieved++;
+						if (retrieved == Frame.max)
+						{
+							retrieved=0;
+						}
 				}
 				
 			}
 		});
+		Frame.btnArbitrateBUS.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				retrieved=0;
+			}
+		});
+		
 		
 		fldData.addKeyListener(new KeyListener() {
 			public void keyTyped(KeyEvent e) {
@@ -217,6 +214,33 @@ public class NodeGUI extends JDialog{
 			}
 			@Override
 			public void keyPressed(KeyEvent e) {
+			}
+		});
+		
+		Frame.btnReset.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (e.getSource()==Frame.btnReset){
+					fldRX.setText("-empty-");
+					fldTX.setText("-empty-");
+					fldData.setText("-empty-");
+					fldLength.setText("0");
+					fldRX.setBackground(Color.WHITE);
+					fldTX.setBackground(Color.WHITE);
+				}
+			}
+		});
+		
+		Frame.toggleSIM.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+					fldRX.setText("-empty-");
+					fldTX.setText("-empty-");
+					fldData.setText("-empty-");
+					fldLength.setText("0");
+					fldRX.setBackground(Color.WHITE);
+					fldTX.setBackground(Color.WHITE);
 			}
 		});
 	}
@@ -237,8 +261,14 @@ public class NodeGUI extends JDialog{
 		this.btnTransmit = btnTransmit;
 	}
 
+	public int getRetrieved() {
+		return retrieved;
+	}
 
 
+
+
+	
 		
 			
 		
