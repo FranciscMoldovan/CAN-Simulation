@@ -1,43 +1,36 @@
 package views;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.Timer;
+import java.util.TreeMap;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JDialog;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JToggleButton;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JButton;
 
 import Model.Node;
 import Model.NodeDOM;
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.image.BufferedImage;
-import java.awt.Font;
-import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.regex.Pattern;
-
-import javax.swing.JLabel;
-import javax.swing.JToggleButton;
 
 public class Frame extends JFrame {
 
+
+	public static Timer timer;
+	
 	private static Object[][] dummyData;
 	private static Object[] columns = {"NodeID", "Message"};
 	
@@ -59,7 +52,7 @@ public class Frame extends JFrame {
 	static JTable sortedTable;
 	static JButton btnReset;
 	static JButton btnArbitrateBUS;
-	static JToggleButton toggleSIM;
+
 	static TreeMap<String,ArrayList<String>> nodeActivity = new TreeMap<String,ArrayList<String>>();
 	
 	
@@ -191,30 +184,9 @@ public class Frame extends JFrame {
 			}
 		});
 		
-		toggleSIM = new JToggleButton("Automatic SIMULATION");
-		toggleSIM.setFont(new Font("Linux Biolinum G", Font.BOLD, 18));
-		toggleSIM.setBounds(211, 23, 251, 38);
-		contentPane.add(toggleSIM);
 		
-		toggleSIM.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				resetAll();
-				nodeTransmitions="";
-				if (toggleSIM.isSelected()){
-					btnStep.setVisible(false);
-					btnAddNode.setVisible(false);
-					btnArbitrateBUS.setVisible(false);
-					btnReset.setVisible(false);
-				}else
-				{
-					btnStep.setVisible(true);
-					btnAddNode.setVisible(true);
-					btnArbitrateBUS.setVisible(true);
-					btnReset.setVisible(true);
-				}
-			}
-		});
+		
+	
 		
 		
 		

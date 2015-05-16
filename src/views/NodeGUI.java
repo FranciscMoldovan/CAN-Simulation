@@ -53,6 +53,9 @@ public class NodeGUI extends JDialog{
 		super(parent, modal);
 		this.nodeNumber=nodeNumber;
 		this.setTitle(title);
+		
+		
+		
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -231,18 +234,8 @@ public class NodeGUI extends JDialog{
 			}
 		});
 		
-		Frame.toggleSIM.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-					fldRX.setText("-empty-");
-					fldTX.setText("-empty-");
-					fldData.setText("-empty-");
-					fldLength.setText("0");
-					fldRX.setBackground(Color.WHITE);
-					fldTX.setBackground(Color.WHITE);
-			}
-		});
+		
+		
 	}
 
 	public int getNodeNumber() {
