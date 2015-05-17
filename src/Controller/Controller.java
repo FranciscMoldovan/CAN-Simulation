@@ -157,7 +157,7 @@ public class Controller {
 					if (okID && !idTaken) {
 						NodeDOM nDOM = new NodeDOM();
 						Node newNode = new Node(addGUI.getFldID().getText(),
-								"-empty-");
+								"empty");
 						nDOM.addNode(newNode);
 
 						refreshNodes();

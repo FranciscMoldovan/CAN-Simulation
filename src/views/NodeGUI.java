@@ -224,9 +224,9 @@ public class NodeGUI extends JDialog{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (e.getSource()==Frame.btnReset){
-					fldRX.setText("-empty-");
-					fldTX.setText("-empty-");
-					fldData.setText("-empty-");
+					fldRX.setText("empty");
+					fldTX.setText("empty");
+					fldData.setText("empty");
 					fldLength.setText("0");
 					fldRX.setBackground(Color.WHITE);
 					fldTX.setBackground(Color.WHITE);
